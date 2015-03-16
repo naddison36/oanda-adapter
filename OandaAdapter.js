@@ -129,7 +129,7 @@ OandaAdapter.prototype._onEventsData = function (data) {
                     // Wait for next line.
                     return;
                 }
-                console.error("[ERROR] Unable to parse Oanda events subscription update", this._eventsBuffer.join("\n"), error);
+                logger.error("Unable to parse Oanda events subscription update", this._eventsBuffer.join("\n"), error);
                 this._eventsBuffer = [];
                 return;
             }
@@ -146,7 +146,7 @@ OandaAdapter.prototype._onEventsData = function (data) {
 };
 
 OandaAdapter.prototype._eventsHeartbeatTimeout = function () {
-    console.warn("[WARN] OandaAdapter: No heartbeat received from events stream for 20 seconds. Reconnecting.");
+    logger.warn("OandaAdapter: No heartbeat received from events stream for 20 seconds. Reconnecting.");
     this._streamEvents();
 };
 
@@ -158,7 +158,7 @@ OandaAdapter.prototype.getAccounts = function (callback) {
     }, function (error, body, statusCode) {
         if (error) {
             if (body && body.message) {
-                console.error("[ERROR] Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
+                logger.error("Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
                 return callback(body.message);
             }
             return callback(error);
@@ -188,7 +188,7 @@ OandaAdapter.prototype.getInstruments = function (accountId, callback) {
     function (error, body, statusCode) {
         if (error) {
             if (body && body.message) {
-                console.error("[ERROR] Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
+                logger.error("Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
                 return callback(body.message);
             }
             return callback(error);
@@ -215,7 +215,7 @@ OandaAdapter.prototype.getPrice = function (symbol, callback) {
     }, function (error, body, statusCode) {
         if (error) {
             if (body && body.message) {
-                console.error("[ERROR] Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
+                logger.error("Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
                 return callback(body.message);
             }
             return callback(error);
@@ -325,7 +325,7 @@ OandaAdapter.prototype._onPricesData = function (data) {
                     return;
                 }
                 // Drop if cannot produce object after 5 updates
-                console.error("[ERROR] Unable to parse Oanda price subscription update", this._pricesBuffer.join("\n"), error);
+                logger.error("Unable to parse Oanda price subscription update", this._pricesBuffer.join("\n"), error);
                 this._pricesBuffer = [];
                 return;
             }
@@ -345,7 +345,7 @@ OandaAdapter.prototype._onPricesData = function (data) {
 };
 
 OandaAdapter.prototype._pricesHeartbeatTimeout = function () {
-    console.warn("[WARN] OandaAdapter: No heartbeat received from prices stream for 10 seconds. Reconnecting.");
+    logger.warn("OandaAdapter: No heartbeat received from prices stream for 10 seconds. Reconnecting.");
     delete this.lastPriceSubscriptions;
     this._streamPrices();
 };
@@ -369,7 +369,7 @@ OandaAdapter.prototype.getCandles = function (symbol, start, end, granularity, c
     }, function (error, body, statusCode) {
         if (error) {
             if (body && body.message) {
-                console.error("[ERROR] Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
+                logger.error("Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
                 return callback(body.message);
             }
             return callback(error);
@@ -393,7 +393,7 @@ OandaAdapter.prototype.getOpenPositions = function (accountId, callback) {
     }, function (error, body, statusCode) {
         if (error) {
             if (body && body.message) {
-                console.error("[ERROR] Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
+                logger.error("Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
                 return callback(body.message);
             }
             return callback(error);
@@ -414,7 +414,7 @@ OandaAdapter.prototype.getOpenTrades = function (accountId, callback) {
     }, function (error, body, statusCode) {
         if (error) {
             if (body && body.message) {
-                console.error("[ERROR] Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
+                logger.error("Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
                 return callback(body.message);
             }
             return callback(error);
@@ -478,7 +478,7 @@ OandaAdapter.prototype.createOrder = function (accountId, order, callback) {
     }, function (error, body, statusCode) {
         if (error) {
             if (body && body.message) {
-                console.error("[ERROR] Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
+                logger.error("Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
                 return callback(body.message);
             }
             return callback(error);
@@ -495,7 +495,7 @@ OandaAdapter.prototype.closeTrade = function (accountId, tradeId, callback) {
     }, function (error, body, statusCode) {
         if (error) {
             if (body && body.message) {
-                console.error("[ERROR] Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
+                logger.error("Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
                 return callback(body.message);
             }
             return callback(error);
