@@ -2,7 +2,8 @@ var _ = require("underscore"),
     Events = require("./Events"),
     querystring = require("querystring"),
     httpClient = require("./httpClient"),
-    utils = require("./utils");
+    utils = require("./utils"),
+    logger = require("logger");
 
 var environments = {
     sandbox: {
