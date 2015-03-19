@@ -1,7 +1,7 @@
 var http = require("http"),
     https = require("https"),
     querystring = require("querystring"),
-    logger = require('logger');
+    logger = require('config-logger');
 
 module.exports = {
 

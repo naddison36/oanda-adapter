@@ -3,7 +3,7 @@ var _ = require("underscore"),
     querystring = require("querystring"),
     httpClient = require("./httpClient"),
     utils = require("./utils"),
-    logger = require("logger");
+    logger = require("config-logger");
 
 var environments = {
     sandbox: {

@@ -16,7 +16,7 @@
   "dependencies": {
     "backbone-events-standalone": "~0.2.6",
     "underscore": "~1.8.2",
-    "logger": "git://github.com/naddison36/logger#v0.0.2"
+    "config-logger": "~0.0.3"
   },
   "main": "OandaAdapter.js",
   "license": "MIT"
