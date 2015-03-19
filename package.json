@@ -1,6 +1,6 @@
 {
   "name": "oanda-adapter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Fork of Node.js adapter for OANDA's REST and streaming API.",
   "homepage": "https://github.com/naddison36/oanda-adapter",
   "keywords": [
