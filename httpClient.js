@@ -10,7 +10,7 @@ module.exports = {
         var options,
             request,
             keepAlive,
-            timeout = 15000;
+            timeout = 20000;
 
         if (typeof hostname === "object") {
             options = hostname;
@@ -79,7 +79,7 @@ module.exports = {
                     return callback(true, body, statusCode, body); // TODO added body as second argument anyway (error responses can have a body that describes the error). Get rid of anywhere expecting it as 4th arg
                 }
 
-                logger.info("HTTPS IN ", options.hostname, options.port, options.method, options.path);
+                logger.info("HTTPS IN %s", body);
                 callback(null, body, statusCode);
             });
 
