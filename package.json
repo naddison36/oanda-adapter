@@ -1,6 +1,6 @@
 {
   "name": "oanda-adapter",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Fork of Node.js adapter for OANDA's REST and streaming API.",
   "homepage": "https://github.com/naddison36/oanda-adapter",
   "keywords": [
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "backbone-events-standalone": "~0.2.6",
-    "underscore": "~1.8.2",
+    "underscore": "~1.8.3",
     "config-logger": "~0.0.3"
   },
   "main": "OandaAdapter.js",

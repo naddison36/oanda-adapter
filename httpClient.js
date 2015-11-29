@@ -79,7 +79,7 @@ module.exports = {
                     return callback(true, body, statusCode, body); // TODO added body as second argument anyway (error responses can have a body that describes the error). Get rid of anywhere expecting it as 4th arg
                 }
 
-                logger.info("HTTPS IN %s", body);
+                logger.info("HTTPS IN", body);
                 callback(null, body, statusCode);
             });
 

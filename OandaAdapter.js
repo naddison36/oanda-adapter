@@ -351,18 +351,17 @@ OandaAdapter.prototype._pricesHeartbeatTimeout = function () {
     this._streamPrices();
 };
 
-OandaAdapter.prototype.getCandles = function (symbol, start, end, granularity, callback) {
+/**
+ * Get historical price information about an instrument in candlestick format as defined at
+ * http://developer.oanda.com/rest-live/rates/#aboutCandlestickRepresentation
+ */
+OandaAdapter.prototype.getCandles = function (instrument, options, callback)
+{
+    options = _.extend(options, {instrument: instrument});
 
     this._sendRESTRequest({
         method: "GET",
-        path: "/v1/candles?" + querystring.stringify({
-            instrument: symbol,
-            start: new Date(start).getTime(),
-            end: new Date(end).getTime(),
-            granularity: granularity,
-            alignmentTimezone: "GMT0",
-            dailyAlignment: 0
-        }),
+        path: "/v1/candles?" + querystring.stringify(options),
         headers: {
             Authorization: "Bearer " + this.accessToken,
             "X-Accept-Datetime-Format": "UNIX"
