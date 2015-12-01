@@ -29,7 +29,7 @@ module.exports = {
 
         keepAlive = options.headers && options.headers.Connection === "Keep-Alive";
 
-        logger.info("HTTPS OUT", options.hostname, options.port, options.method, options.path);
+        logger.debug("HTTPS OUT", options.hostname, options.port, options.method, options.path);
 
         if (options.secure === false) {
             request = http.request(options);
@@ -79,7 +79,7 @@ module.exports = {
                     return callback(true, body, statusCode, body); // TODO added body as second argument anyway (error responses can have a body that describes the error). Get rid of anywhere expecting it as 4th arg
                 }
 
-                logger.info("HTTPS IN", body);
+                logger.debug("HTTPS IN", body);
                 callback(null, body, statusCode);
             });
 
