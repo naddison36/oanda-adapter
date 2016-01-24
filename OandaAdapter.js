@@ -508,6 +508,27 @@ OandaAdapter.prototype.closeTrade = function (accountId, tradeId, callback) {
     });
 };
 
+OandaAdapter.prototype.getOrders = function (accountId, callback)
+{
+    this._sendRESTRequest({
+        method: "GET",
+        path: "/v1/accounts/" + accountId + "/orders",
+        headers: {
+            Authorization: "Bearer " + this.accessToken,
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+    }, function (error, body, statusCode) {
+        if (error) {
+            if (body && body.message) {
+                logger.error("Response from Oanda", statusCode + " Error: " + body.message + " (OANDA error code " + body.code + ")");
+                return callback(body.message);
+            }
+            return callback(error);
+        }
+        callback(null, body);
+    });
+};
+
 OandaAdapter.prototype._sendRESTRequest = function (request, callback) {
 
     request.hostname = this.restHost;
